@@ -7,23 +7,42 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="app">
+    <input type="text" v-model="name">
+    <input type="text" v-model="list.name">
+    <p>{{name}}</p>
+    <p>{{list.name}}</p>
+    <p v-html="list.text"></p>
+    <button v-on:click="change">change</button>
+  </div>
+  <script src="./observer.js"></script>
+  <script src="./watch.js"></script>
+  <script src="./compile.js"></script>
   <script src="index.js"></script>
   <script>
-    new Vue({
-      el: '#app',
-      data: {
-        str: 'hello world'
-      },
-      methods: {
+    var vm = new Vue({
+        el: '#app',
+        data: {
+          name: 'hello',
+          list: {
+            name: 'world',
+            text: '<span style="color: red;">red</span>'
+          }
+        },
+        methods: {
+          change() {
+            this.list.name = 'llllll'
+          }
+        },
+        computed: {
+          getHW() {
+            return this.name + this.list.name
+          }
+        },
+        mounted() {
 
-      },
-      computed: {
-
-      },
-      mounted() {
-        
-      }
-    })
+        }
+      })
   </script>
 </body>
 </html>

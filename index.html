@@ -9,33 +9,33 @@
 <body>
   <div id="app">
     <input type="text" v-model="name">
-    <input type="text" v-model="list.name">
+    <input type="text" v-model="list.desc">
     <p>{{name}}</p>
-    <p>{{list.name}}</p>
+    <p>{{list.desc}}</p>
     <p v-html="list.text"></p>
     <button v-on:click="change">change</button>
   </div>
-  <script src="./observer.js"></script>
-  <script src="./watch.js"></script>
-  <script src="./compile.js"></script>
+  <script src="observer.js"></script>
+  <script src="watch.js"></script>
+  <script src="compile.js"></script>
   <script src="index.js"></script>
   <script>
-    var vm = new Vue({
+    var vm = new Vuue({
         el: '#app',
         data: {
           name: 'hello',
           list: {
-            name: 'world',
+            desc: 'world',
             text: '<span style="color: red;">red</span>'
           }
         },
         methods: {
-          change() {
+          change: function() {
             this.list.name = 'llllll'
           }
         },
         computed: {
-          getHW() {
+          getHW: function() {
             return this.name + this.list.name
           }
         },
